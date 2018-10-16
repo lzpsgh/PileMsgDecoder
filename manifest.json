@@ -1,5 +1,5 @@
 {
-  "name": "Gizwits",
+  "name": "桩报文解码",
   "description": "自动化测试插件，支持一键查看设备日志、解码桩报文等功能",
   "version": "0.1",
   "permissions": [
