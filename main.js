@@ -11,8 +11,8 @@ var testPileMsg2 = "6888373234353134383330333132303838313300000000000000000b0231
 
 var decodePileMsg = "桩报文解码"
 var id1 = chrome.contextMenus.create({"title":decodePileMsg,"contexts":[context],"onclick":decodeOnClick});
-var showDeviceLog = "查看设备日志"
-var id2 = chrome.contextMenus.create({"title":showDeviceLog,"contexts":[context],"onclick":showOnClick});
+//var showDeviceLog = "查看设备日志"
+//var id2 = chrome.contextMenus.create({"title":showDeviceLog,"contexts":[context],"onclick":showOnClick});
 
 /*
 // Create one test item for each context type.
