@@ -1,13 +1,20 @@
 {
   "name": "Gizwits充电桩",
   "description": "自动化测试插件，支持一键查看设备日志、解码桩报文等功能",
-  "version": "0.2",
+  "version": "0.3",
   "permissions": [
     "contextMenus",
     "http://111.207.235.55/m2m/data/resolve?*"
   ],
   "background": {
     "scripts": ["main.js"]
+  },
+  "options_page": "options.html",
+  "options_ui":
+  {
+      "page": "options.html",
+      "open_in_tab": false,
+      "chrome_style": true
   },
   "manifest_version": 2
 }
