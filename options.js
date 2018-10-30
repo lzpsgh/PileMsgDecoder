@@ -19,6 +19,7 @@ function save_options() {
 
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
+// 还原为缺省设置 
 function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({

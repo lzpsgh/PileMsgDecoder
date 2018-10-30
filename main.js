@@ -34,7 +34,8 @@ function onClickEvent(info, tab){
 }
 
 function tran2Mac(pileID){
-  alert("这个功能我们很快就上了！！！");
+  //alert("这个功能我们很快就上了！！！");
+  get_options();
 }
 
 function decode(pileMsg){
@@ -77,6 +78,17 @@ function callHandle(){
       }
   }
 }
+
+function get_options(){
+  //var syncRequestURL = "https://lzpsgh.github.io/";
+  chrome.storage.sync.get(['syncrequestURL'], function(result) {
+    if (!chrome.runtime.error) {
+      console.log(result);
+      alert('设置的URL是：' + result.syncrequestURL);
+    }
+  });
+}
+
 
 
 
