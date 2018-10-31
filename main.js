@@ -10,16 +10,15 @@ var xmlhttp = new XMLHttpRequest();
 var title = "Gizwits"
 var id1 = chrome.contextMenus.create({"title":title,"contexts":[context],"onclick":onClickEvent});
 
+myurl = get_options();
 
 function onClickEvent(info, tab){
  // 使用window.getSelection().toString()无法获取选中文本,只能改用自带的方法
  var fullText = info.selectionText.toString();
-
  //非string判断
  if(typeof fullText != "string"){
      console.log("wtf");
  }
-
  //类型判断
  var fLen = fullText.length;
  if( (fullText.substring(0,2)=="68") && (fullText.substring(fLen-2,fLen)=="16")  ){
@@ -40,7 +39,7 @@ function tran2Mac(pileID){
 
 function decode(pileMsg){
   xmlhttp.onreadystatechange = callHandle;
-  xmlhttp.open("POST", "http://111.207.235.55/m2m/data/resolve?tdsourcetag=s_pctim_aiomsg", true);
+  xmlhttp.open("POST", myurl, true);
   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
   // xmlhttp.setRequestHeader("Host","111.207.235.55");
   // xmlhttp.setRequestHeader("Connection","keep-alive");
@@ -81,38 +80,12 @@ function callHandle(){
 
 function get_options(){
   //var syncRequestURL = "https://lzpsgh.github.io/";
+  var url;
   chrome.storage.sync.get(['syncrequestURL'], function(result) {
     if (!chrome.runtime.error) {
-      console.log(result);
-      alert('设置的URL是：' + result.syncrequestURL);
+      console.log('URL='+result.syncrequestURL);
+      url = result.syncrequestURL.toString();
     }
   });
+  return url;
 }
-
-
-
-
-/*
-// Create one test item for each context type.
-var contexts = ["page","selection","link","editable","image","video",
-                "audio"];
-for (var i = 0; i < contexts.length; i++) {
-  var context = contexts[i];
-  var title = "Test '" + context + "' menu item";
-  var id = chrome.contextMenus.create({"title": title, "contexts":[context],
-                                       "onclick": genericOnClick});
-  console.log("'" + context + "' item:" + id);
-}
-
-console.log("item " + info.menuItemId + " was clicked");
-console.log("info: " + JSON.stringify(info));
-console.log("tab: " + JSON.stringify(tab));
-
-// Create a parent item and two children.
-var parent = chrome.contextMenus.create({"title": "Test parent item"});
-var child1 = chrome.contextMenus.create(
-  {"title": "Child 1", "parentId": parent, "onclick": genericOnClick});
-var child2 = chrome.contextMenus.create(
-  {"title": "Child 2", "parentId": parent, "onclick": genericOnClick});
-console.log("parent:" + parent + " child1:" + child1 + " child2:" + child2);
-*/
