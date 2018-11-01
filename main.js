@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// myurl太不优雅
+
 var contexts = ["page","selection","link","editable","image","video","audio"];
 var context = contexts[1];
 var isCopyClipboard = true;
@@ -38,6 +40,7 @@ function tran2Mac(pileID){
 }
 
 function decode(pileMsg){
+  get_options();
   xmlhttp.onreadystatechange = callHandle;
   xmlhttp.open("POST", myurl, true);
   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
@@ -80,12 +83,10 @@ function callHandle(){
 
 function get_options(){
   //var syncRequestURL = "https://lzpsgh.github.io/";
-  var url;
   chrome.storage.sync.get(['syncrequestURL'], function(result) {
     if (!chrome.runtime.error) {
       console.log('URL='+result.syncrequestURL);
-      url = result.syncrequestURL.toString();
+      myurl = result.syncrequestURL;
     }
   });
-  return url;
 }
