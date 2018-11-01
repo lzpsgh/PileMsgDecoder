@@ -8,16 +8,13 @@ var contexts = ["page","selection","link","editable","image","video","audio"];
 var context = contexts[1];
 var isCopyClipboard = true;
 var xmlhttp = new XMLHttpRequest();
-
 var title = "Gizwits"
 var id1 = chrome.contextMenus.create({"title":title,"contexts":[context],"onclick":onClickEvent});
-
-myurl = get_options();
+var myurl = get_options();
 
 function onClickEvent(info, tab){
  // 使用window.getSelection().toString()无法获取选中文本,只能改用自带的方法
  var fullText = info.selectionText.toString();
- //非string判断
  if(typeof fullText != "string"){
      console.log("wtf");
  }
@@ -35,29 +32,22 @@ function onClickEvent(info, tab){
 }
 
 function tran2Mac(pileID){
-  //alert("这个功能我们很快就上了！！！");
-  get_options();
+  alert("这个功能我们很快就上了！！！");
 }
 
 function decode(pileMsg){
-  get_options();
   xmlhttp.onreadystatechange = callHandle;
+  if(myurl==null){
+    
+  }
   xmlhttp.open("POST", myurl, true);
   xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
-  // xmlhttp.setRequestHeader("Host","111.207.235.55");
-  // xmlhttp.setRequestHeader("Connection","keep-alive");
-  // xmlhttp.setRequestHeader("Content-Length","76");
   xmlhttp.setRequestHeader("Cache-Control","max-age=0");
-  // xmlhttp.setRequestHeader("Origin","http://111.207.235.55");
   xmlhttp.setRequestHeader("Upgrade-Insecure-Requests","1");
-  // xmlhttp.setRequestHeader("DNT","1");
   xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   // xmlhttp.setRequestHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36");
   xmlhttp.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
-  // xmlhttp.setRequestHeader("Referer","http://111.207.235.55/m2m/data/resolve?tdsourcetag=s_pctim_aiomsg");
-  // xmlhttp.setRequestHeader("Accept-Encoding","gzip, deflate");
   xmlhttp.setRequestHeader("Accept-Language","zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7");
-  //xmlhttp.setRequestHeader("Cookie","JSESSIONID=6229BDE9314F0A19D6A6FCB80903FF6E");
   xmlhttp.send("protocol=0&data=" + pileMsg);  
 }
 
@@ -82,10 +72,9 @@ function callHandle(){
 }
 
 function get_options(){
-  //var syncRequestURL = "https://lzpsgh.github.io/";
+  //myurl = "https://lzpsgh.github.io/";
   chrome.storage.sync.get(['syncrequestURL'], function(result) {
     if (!chrome.runtime.error) {
-      console.log('URL='+result.syncrequestURL);
       myurl = result.syncrequestURL;
     }
   });

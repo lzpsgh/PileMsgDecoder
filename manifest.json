@@ -1,7 +1,7 @@
 {
   "name": "Gizwits充电桩",
   "description": "自动化测试插件，支持一键查看设备日志、解码桩报文等功能",
-  "version": "0.3",
+  "version": "0.5",
   "permissions": [
     "storage",
     "contextMenus",
