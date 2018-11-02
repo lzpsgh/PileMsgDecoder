@@ -5,17 +5,26 @@
   "permissions": [
     "storage",
     "contextMenus",
+    "webRequest",
     "http://111.207.235.55/m2m/data/resolve?*"
   ],
   "background": {
     "scripts": ["main.js"]
   },
+  "icons":
+    {
+        "16": "img/icon.png",
+        "48": "img/icon.png",
+        "128": "img/icon.png"
+    },
+  "homepage_url": "https://lzpsgh.github.io/",
   "options_page": "options.html",
   "options_ui":
   {
       "page": "options.html",
-      "open_in_tab": false,
+      "open_in_tab": true,
       "chrome_style": true
   },
   "manifest_version": 2
+
 }

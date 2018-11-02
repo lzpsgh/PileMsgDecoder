@@ -72,7 +72,6 @@ function callHandle(){
 }
 
 function get_options(){
-  //myurl = "https://lzpsgh.github.io/";
   chrome.storage.sync.get(['syncrequestURL'], function(result) {
     if (!chrome.runtime.error) {
       myurl = result.syncrequestURL;
